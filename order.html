@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đặt hàng</title>
+</head>
+<body>
+
+<h2>Thông tin đặt hàng</h2>
+
+<form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
+  <input type="hidden" name="_subject" value="Đơn hàng mới từ website">
+
+  <p>Họ và tên:</p>
+  <input name="name" required>
+
+  <p>Số điện thoại:</p>
+  <input name="phone" required>
+
+  <p>Địa chỉ:</p>
+  <input name="address" required>
+
+  <p>Ghi chú:</p>
+  <textarea name="note"></textarea>
+
+  <p>Sản phẩm:</p>
+  <textarea name="order" id="orderBox"></textarea>
+
+  <button type="submit">Xác nhận đặt hàng</button>
+</form>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let text = "";
+  cart.forEach(i => text += i.name + " - " + i.price + "đ\n");
+  document.getElementById("orderBox").value = text;
+</script>
+
+</body>
+</html>
